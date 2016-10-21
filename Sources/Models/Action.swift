@@ -19,7 +19,7 @@ public class Action<Model> {
         FlowErrorHandler.handle(action: { try invocation?(model) }) {
             
             let children = caller.flatMap { Mirror(reflecting: $0) }?.children.flatMap { $0 }
-            let label = children?.first { ($0.value as? AnyObject) === (self as? AnyObject) }?.label
+            let label = children?.first { ($0.value as AnyObject) === (self as AnyObject) }?.label
             return InvocationContext(model: model, file: file, function: function, label: label)
         }
     }
