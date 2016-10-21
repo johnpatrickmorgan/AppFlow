@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'AppFlow'
-  s.version          = '0.1.0'
+  s.version          = '0.1.1'
   s.summary          = "AppFlow provides a type-checked declarative DSL for defining your app's user and data flow."
 
   s.description      = <<-DESC
