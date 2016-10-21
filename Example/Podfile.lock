@@ -1,0 +1,16 @@
+PODS:
+  - AppFlow (0.1.0)
+
+DEPENDENCIES:
+  - AppFlow (from `../`)
+
+EXTERNAL SOURCES:
+  AppFlow:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  AppFlow: 59e66cbaa0bbe787f44dab764d76f2f13d264201
+
+PODFILE CHECKSUM: cfb002ac91ee4bf80a7a3140de47e4c5260a63a0
+
+COCOAPODS: 1.1.1
