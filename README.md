@@ -1,9 +1,9 @@
 #AppFlow ~~>
 
-![Swift](https://img.shields.io/badge/Swift-3.0-green.svg?style=plastic)
-![Version](https://img.shields.io/cocoapods/v/Flow.svg?style=flat)
-![License](https://img.shields.io/cocoapods/l/Flow.svg?style=flat)
-![Platform](https://img.shields.io/cocoapods/p/Flow.svg?style=flat)
+![Swift](https://img.shields.io/badge/Swift-3.0-green.svg?style=flat)
+![Version](https://img.shields.io/cocoapods/v/AppFlow.svg?style=flat)
+![License](https://img.shields.io/cocoapods/l/AppFlow.svg?style=flat)
+![Platform](https://img.shields.io/cocoapods/p/AppFlow.svg?style=flat)
 
 AppFlow provides a type-checked declarative DSL for defining your app's user and data flow. It makes it easy to adopt the flow coordinator/controller pattern. Here's an example:
 
