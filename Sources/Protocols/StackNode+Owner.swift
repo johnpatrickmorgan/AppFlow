@@ -1,5 +1,5 @@
 //
-//  StackNode+Owner.swift
+//  StackNode+flow.swift
 //  Pods
 //
 //  Created by John Morgan on 05/09/2016.
@@ -10,12 +10,12 @@ import Foundation
 
 extension StackNodeLink {
     
-    public var owner: StackOwning? {
+    public var flow: UntypedFlow? {
         get {
-            return previous.owner
+            return previous.flow
         }
         set {
-            previous.owner = newValue
+            previous.flow = newValue
         }
     }
 }

@@ -12,7 +12,7 @@ public class Root<ViewController: UIViewController>: StackNodeEnd, Presenting {
     
     public var viewController: ViewController
     
-    weak public var owner: StackOwning?
+    weak public var flow: UntypedFlow?
     
     public func configure(configure: (ViewController, Root) throws -> Void) rethrows -> Root {
         
@@ -21,11 +21,11 @@ public class Root<ViewController: UIViewController>: StackNodeEnd, Presenting {
         return self
     }
     
-    public init(_ root: ViewController, owner: StackOwning? = nil, configure: ((ViewController, Root) -> Void)? = nil) {
+    public init(_ root: ViewController, flow: UntypedFlow? = nil, configure: ((ViewController, Root) -> Void)? = nil) {
         
         self.viewController = root
-        self.owner = owner
-        owner?.stack = self
+        self.flow = flow
+        flow?.stack = self
         
         configure?(viewController, self)
     }

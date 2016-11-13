@@ -2,6 +2,7 @@
 
 - Tests
 - Documentation
+- Immediately action to invoke a flow action immediately
 - When swift allows stack node protocols should add extra constraints on Previous
 - `overrideAnimated` from action? To allow flow step recreation to jump straight to a flow stack?
 - unwindTo should unwind each node in turn rather than Navigation StackNodes having to do dismissing just in case

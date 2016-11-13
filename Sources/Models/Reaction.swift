@@ -27,13 +27,13 @@ public class Reaction<Model, ResultingStack: StackNode> {
             
             guard let from = from else { throw FlowError.unretainedStack }
             
-            guard let owner = from.owner else { throw FlowError.ownerlessStack }
+            guard let flow = from.flow else { throw FlowError.flowlessStack }
             
             if verified { try from.verify() }
             
             let resultingStack = try transition(from, model)
             
-            owner.stack = resultingStack
+            flow.stack = resultingStack
             
             return resultingStack
         }

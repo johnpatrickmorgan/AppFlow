@@ -10,28 +10,25 @@ import Foundation
 
 public class PushedFlow<RootVC: UIViewController, Previous: NavigationChild>: Pushed<RootVC, Previous> {
     
-    public var flow: Flow<RootVC>
+    public var pushedFlow: Flow<RootVC>
     
-    init(flow: Flow<RootVC>, previous: Previous) {
+    init(_ pushedFlow: Flow<RootVC>, previous: Previous) {
         
-        self.flow = flow
+        self.pushedFlow = pushedFlow
         
-        super.init(viewController: flow.rootViewController, previous: previous)
+        super.init(viewController: pushedFlow.rootViewController, previous: previous)
         
-        flow.onStackChange = { [weak self] flow in
-            guard let owner = self?.owner else { return }
-            owner.stack = owner.stack
-        }
+        pushedFlow.parentFlow = self.flow
     }
     
     public override func verify() throws {
         
         try super.verify()
         
-        try flow.stack.verify()
+        try pushedFlow.stack.verify()
     }
     
     public override var pictographicDescription: String {
-        return "\(previous.pictographicDescription) → \(flow.stack.pictographicDescription)"
+        return "\(previous.pictographicDescription) → \(pushedFlow.stack.pictographicDescription)"
     }
 }

@@ -41,7 +41,7 @@ extension Pushing where Self: ChildVCNode {
             
             me.navigator.pushViewController(nextViewController, animated: animated)
             
-            let resultingStack = PushedFlow(flow: nextFlow, previous: me)
+            let resultingStack = PushedFlow(nextFlow, previous: me)
             
             return resultingStack
         }

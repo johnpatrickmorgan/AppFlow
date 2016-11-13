@@ -8,17 +8,18 @@
 
 import Foundation
 
-public class Flow<RootVC: UIViewController>: StackOwning {
+public class Flow<RootVC: UIViewController>: UntypedFlow {
     
     public var stack: UntypedStackNode {
         didSet {
-            stack.owner = self
-            FlowErrorHandler.handle(action: { try verifyRoot() })
-            onStackChange?(self)
+            parentFlow?.stackDidChange()
+            stackDidChange()
         }
     }
     
     public var onStackChange: ((Flow) -> Void)?
+    
+    public weak var parentFlow: UntypedFlow?
     
     public var rootStack: Root<RootVC>
     
@@ -30,7 +31,7 @@ public class Flow<RootVC: UIViewController>: StackOwning {
         
         self.rootStack = stack
         self.stack = stack
-        self.stack.owner = self
+        self.stack.flow = self
     }
     
     func verifyRoot() throws {
@@ -39,6 +40,13 @@ public class Flow<RootVC: UIViewController>: StackOwning {
         guard rootStack === root else {
             throw FlowError.circularStack
         }
+    }
+    
+    public func stackDidChange() {
+        
+        stack.flow = self
+        FlowErrorHandler.handle(action: { try verifyRoot() })
+        onStackChange?(self)
     }
 }
 

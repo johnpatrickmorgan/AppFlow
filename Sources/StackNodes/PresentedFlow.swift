@@ -10,31 +10,27 @@ import Foundation
 
 public class PresentedFlow<RootVC: UIViewController, Previous: Presenting>: Presented<RootVC, Previous> {
     
+    public var presentedFlow: Flow<RootVC>
     
-    public var flow: Flow<RootVC>
-    
-    init(flow: Flow<RootVC>, previous: Previous) {
+    init(_ presentedFlow: Flow<RootVC>, previous: Previous) {
         
-        self.flow = flow
+        self.presentedFlow = presentedFlow
         
-        super.init(viewController: flow.rootViewController, previous: previous)
+        super.init(viewController: presentedFlow.rootViewController, previous: previous)
         
-        flow.onStackChange = { [weak self] flow in
-            guard let owner = self?.owner else { return }
-            owner.stack = owner.stack
-        }
+        presentedFlow.parentFlow = self.flow
     }
     
     public override func verify() throws {
         
         try super.verify()
         
-        try flow.stack.verify()
+        try presentedFlow.stack.verify()
     }
         
     public override var pictographicDescription: String {
         return "\(previous.pictographicDescription)\n" +
                "↓\n" +
-               "\(flow.stack.pictographicDescription)"
+               "\(presentedFlow.stack.pictographicDescription)"
     }
 }

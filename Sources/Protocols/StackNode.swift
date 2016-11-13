@@ -10,7 +10,7 @@ import Foundation
 
 public protocol UntypedStackNode: class {
     
-    var owner: StackOwning? { get set }
+    var flow: UntypedFlow? { get set }
     
     var pictographicDescription: String { get }
     

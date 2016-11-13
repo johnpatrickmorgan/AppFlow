@@ -11,7 +11,7 @@ import Foundation
 public enum FlowError: Error, CustomStringConvertible {
     
     case unretainedStack
-    case ownerlessStack
+    case flowlessStack
     case circularStack
     case unexpectedRoot(message: String)
     case unverifiableStack(message: String)
@@ -21,8 +21,8 @@ public enum FlowError: Error, CustomStringConvertible {
         switch self {
         case .unretainedStack:
             return "The flow stack was released unexpectedly"
-        case .ownerlessStack:
-            return "The flow stack has no owner"
+        case .flowlessStack:
+            return "The flow stack is not owned by a flow"
         case .unverifiableStack(let message):
             return "The UIKit state does not match the flow stack: \(message)"
         case .circularStack:

@@ -66,7 +66,7 @@ extension Presenting {
             
             me.viewController.present(nextViewController, animated: animated, completion: nil)
             
-            let resultingStack = PresentedFlow(flow: nextFlow, previous: me)
+            let resultingStack = PresentedFlow(nextFlow, previous: me)
             
             return resultingStack
         }
